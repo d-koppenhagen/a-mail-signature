@@ -2,9 +2,9 @@
   "name": "a-mail-signature",
   "description": "Generate and modify Apple Mail E-Mail signatures",
   "version": "0.0.2",
-  "main": "./dist/app.js",
+  "main": "./dist/index.js",
   "bin": {
-    "a-mail-signature": "./dist/app.js"
+    "a-mail-signature": "./dist/index.js"
   },
   "author": "Danny Koppenhagen <mail@d-koppenhagen.de> (https://d-koppenhagen.de)",
   "homepage": "https://github.com/d-koppenhagen/a-mail-signature",
@@ -17,8 +17,8 @@
     "node": "^10.0.0"
   },
   "scripts": {
-    "start": "ts-node src/app.ts",
-    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "build": "tsc -p .",
     "clean": "rimraf dist",
     "lint": "eslint \"**/*.{ts,js}\"",
     "format": "prettier --write \"**/*.{ts,js,json,yaml,yml,md}\"",

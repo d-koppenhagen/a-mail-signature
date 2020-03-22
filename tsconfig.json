@@ -11,6 +11,8 @@
     "declaration": true,
     "outDir": "dist",
     "baseUrl": ".",
+    "types": ["node"],
+    "rootDir": "src",
     "typeRoots": ["src/types", "node_modules/@types"],
     "paths": {
       "*": ["*", "node_modules/*", "src/*"]
