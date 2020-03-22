@@ -4,7 +4,7 @@
   "version": "0.0.3",
   "main": "./dist/index.js",
   "bin": {
-    "a-mail-signature": "./dist/index.js"
+    "a-mail-signature": "./bin/index.js"
   },
   "author": "Danny Koppenhagen <mail@d-koppenhagen.de> (https://d-koppenhagen.de)",
   "homepage": "https://github.com/d-koppenhagen/a-mail-signature",
