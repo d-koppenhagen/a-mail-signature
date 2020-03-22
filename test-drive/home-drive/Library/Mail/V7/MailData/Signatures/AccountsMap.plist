@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>10F252A6-1B92-4F21-8C1D-956C393D9689</key>
+	<dict>
+		<key>AccountURL</key>
+		<string>imap://foo%40bar@bar.com/</string>
+		<key>Signatures</key>
+		<array/>
+	</dict>
+	<key>B0BEC028-CD13-411A-9297-4DFAC68EBE93</key>
+	<dict>
+		<key>AccountURL</key>
+		<string>imap://mail%40example.de@com/</string>
+		<key>Signatures</key>
+		<array>
+			<string>95461197-EC71-4BB9-A7F7-7E4E5A962FC3</string>
+		</array>
+	</dict>
+</dict>
+</plist>
