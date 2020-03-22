@@ -1,11 +1,11 @@
 {
-  "name": "mail-signature-admin",
-  "description": "generate and modify apple mail e-mail signatures",
-  "version": "1.0.0",
+  "name": "a-mail-signature",
+  "description": "Generate and modify Apple Mail E-Mail signatures",
+  "version": "0.0.0",
   "author": "Danny Koppenhagen <mail@d-koppenhagen.de> (https://d-koppenhagen.de)",
-  "homepage": "https://github.com/d-koppenhagen/mail-signature-admin",
+  "homepage": "https://github.com/d-koppenhagen/a-mail-signature",
   "bugs": {
-    "url": "https://github.com/d-koppenhagen/mail-signature-admin/issues",
+    "url": "https://github.com/d-koppenhagen/a-mail-signature/issues",
     "email": "mail@d-koppenhagen.de"
   },
   "license": "SEE LICENSE IN LICENSE",
@@ -43,12 +43,17 @@
   },
   "dependencies": {
     "chalk": "^3.0.0",
+    "plist": "^3.0.1",
+    "select-prompt": "^0.3.2",
+    "uuid": "^7.0.2",
     "yargs": "^15.3.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@types/node": "^13.9.3",
+    "@types/plist": "^3.0.2",
+    "@types/uuid": "^7.0.2",
     "@types/yargs": "^15.0.4",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.1.0",
