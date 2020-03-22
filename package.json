@@ -2,6 +2,10 @@
   "name": "a-mail-signature",
   "description": "Generate and modify Apple Mail E-Mail signatures",
   "version": "0.0.1",
+  "main": "./dist/app.js",
+  "bin": {
+    "a-mail-signature": "./dist/app.js"
+  },
   "author": "Danny Koppenhagen <mail@d-koppenhagen.de> (https://d-koppenhagen.de)",
   "homepage": "https://github.com/d-koppenhagen/a-mail-signature",
   "bugs": {
