@@ -11,6 +11,12 @@ import { v4 as uuid } from 'uuid';
 import { logError, logWarn } from './utils/log';
 const prompt = require('select-prompt');
 
+const BASE_DIR: string = process.env.LOCAL_HOME_DIR
+  ? 'test-drive/home-drive'
+  : os.homedir();
+
+console.log('USE BASE DIR', BASE_DIR);
+
 enum fileDefaults {
   accountMap = 'AccountsMap.plist',
   allSignatures = 'AllSignatures.plist',
@@ -44,7 +50,7 @@ interface Account {
  * for storing mail signatures in apple mail
  */
 const getBasePath = (): string => {
-  const baseDir = 'test-drive/home-drive'; // os.homedir()
+  const baseDir = BASE_DIR;
   const persistenceInfoPath = `${baseDir}/Library/Mail/${fileDefaults.persistenceInfo}`;
   const persistenceInfoParsed = (plist.parse(
     fs.readFileSync(persistenceInfoPath, 'utf8'),

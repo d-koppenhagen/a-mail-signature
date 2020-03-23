@@ -17,7 +17,7 @@
     "node": "^10.0.0"
   },
   "scripts": {
-    "start": "ts-node src/app.ts",
+    "start": "LOCAL_HOME_DIR=true ts-node src/app.ts",
     "build": "tsc",
     "clean": "rimraf dist",
     "lint": "eslint \"**/*.{ts,js}\"",
