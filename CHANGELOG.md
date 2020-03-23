@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.5...v0.0.6) (2020-03-23)
+
+
+### Bug Fixes
+
+* fix bin ([b17c111](https://github.com/d-koppenhagen/a-mail-signature/commit/b17c1113239cc3bf9afd7eeedfc4fa576ffef315))
+
 ### [0.0.5](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.4...v0.0.5) (2020-03-22)
 
 
