@@ -15,8 +15,6 @@ const BASE_DIR: string = process.env.LOCAL_HOME_DIR
   ? 'test-drive/home-drive'
   : os.homedir();
 
-console.log('USE BASE DIR', BASE_DIR);
-
 enum fileDefaults {
   accountMap = 'AccountsMap.plist',
   allSignatures = 'AllSignatures.plist',
@@ -49,13 +47,13 @@ interface Account {
  * determine the current used base path
  * for storing mail signatures in apple mail
  */
-const getBasePath = (): string => {
-  const baseDir = BASE_DIR;
+const getBasePath = (mailDir?: string): string => {
+  const baseDir = mailDir || `${BASE_DIR}/Library/Mail`;
   const persistenceInfoPath = `${baseDir}/Library/Mail/${fileDefaults.persistenceInfo}`;
   const persistenceInfoParsed = (plist.parse(
     fs.readFileSync(persistenceInfoPath, 'utf8'),
   ) as unknown) as PersistenceInfo;
-  return `${baseDir}/Library/Mail/${persistenceInfoParsed.LastUsedVersionDirectoryName}/MailData/Signatures`;
+  return `${baseDir}/${persistenceInfoParsed.LastUsedVersionDirectoryName}/MailData/Signatures`;
 };
 
 /**
