@@ -1,3 +1,8 @@
+#!/usr/bin/env node
+
+/**
+ * The above line is needed to be able to run in npx and CI.
+ */
 import fs from 'fs';
 import os from 'os';
 import plist, { PlistValue, PlistArray } from 'plist';
