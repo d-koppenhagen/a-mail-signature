@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "chalk": "^3.0.0",
+    "inline-css": "^2.6.3",
     "plist": "^3.0.1",
     "select-prompt": "^0.3.2",
     "uuid": "^7.0.2",
@@ -60,6 +61,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@types/inline-css": "0.0.32",
     "@types/node": "^13.9.3",
     "@types/plist": "^3.0.2",
     "@types/uuid": "^7.0.2",

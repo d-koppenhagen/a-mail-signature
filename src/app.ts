@@ -5,11 +5,14 @@
  */
 import fs from 'fs';
 import os from 'os';
+import path from 'path';
+import inlineCss from 'inline-css';
 import plist, { PlistValue, PlistArray } from 'plist';
 import yargs, { Argv } from 'yargs';
 import { v4 as uuid } from 'uuid';
-import { logError, logWarn } from './utils/log';
 const prompt = require('select-prompt');
+
+import { logError, logWarn } from './utils/log';
 
 const BASE_DIR: string = process.env.LOCAL_HOME_DIR
   ? 'test-drive/home-drive'
@@ -138,23 +141,29 @@ const addSignatureToAccount = (uuid: string): Promise<void> => {
  * @param uuid the uuid for the signature to be added
  * @param templateFilePath the template file to be used
  */
-const createMailSignature = (uuid: string, templateFilePath: string) => {
+const createMailSignature = async (uuid: string, templateFilePath: string) => {
   const filePath = `${getBasePath()}/${uuid}.mailsignature`;
   if (fs.existsSync(filePath)) {
     logError(`Signature file "${uuid}.mailsignature" already exists`);
     process.exit(1);
   }
-  const htmlTemplate = fs
-    .readFileSync(templateFilePath, 'utf8')
-    .replace(/(.|\n)*<body.*>/, '')
-    .replace(/<\/body(.|\n)*/g, '');
+  const htmlTemplate = fs.readFileSync(templateFilePath, 'utf8');
+  let inlinedHtml = await inlineCss(htmlTemplate, {
+    url: ' ',
+    removeStyleTags: true,
+    removeLinkTags: true,
+  });
+  inlinedHtml = inlinedHtml
+    .replace(/(.|\n)*<body.*>/, '') // replace everything until "body>"
+    .replace(/<\/body(.|\n)*/g, '') // replace everything before "</body
+    .replace(/(\r\n|\n|\r)/gm, ''); // replace line breaks
 
   const fileContent = `Content-Transfer-Encoding: quoted-printable
 Content-Type: text/html;
   charset=utf-8
 Mime-Version: 1.0
 
-<body>${htmlTemplate}</body>`;
+<body>${inlinedHtml}</body>`;
 
   fs.writeFileSync(filePath, fileContent, 'utf8');
 };

@@ -18,8 +18,9 @@ a-mail-signature <option>
 ```
 
 E-Mail signatures will be defined as HTML.
-You can create a HTML file containing any style of your signature by using simple HTML.
-All styles should be added as inline style (e.g. `<div style="padding-left: 20px;font-weight: bold;">Best regards</div>`).
+
+> Note: all CSS styles must be either inlined or provided inside the `<style></style>` tag.
+> An external reference to a stylesheet using `<style href="style.css">` is not supported.
 
 ### Options
 
