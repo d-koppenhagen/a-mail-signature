@@ -164,6 +164,13 @@ Mime-Version: 1.0
  * @param path the HTML template file path
  */
 const createSignature = async (path: string, name: string) => {
+  if (!name) {
+    logError(
+      `No name for the signature provided (see usage by running "npx a-mail-signature --help")`,
+    );
+    process.exit(1);
+  }
+
   const signatureUuid = uuid().toUpperCase();
   createMailSignature(signatureUuid, path);
   addSignatureToAllSignatures(signatureUuid, name);
