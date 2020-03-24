@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.9...v0.0.10) (2020-03-24)
+
+
+### Bug Fixes
+
+* fix path and provide name for target signatur ([3108ea3](https://github.com/d-koppenhagen/a-mail-signature/commit/3108ea38774cf2688962679df276cc2dc83aaf7e))
+
 ### [0.0.9](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.8...v0.0.9) (2020-03-23)
 
 
