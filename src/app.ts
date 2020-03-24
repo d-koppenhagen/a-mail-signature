@@ -49,7 +49,7 @@ interface Account {
  */
 const getBasePath = (mailDir?: string): string => {
   const baseDir = mailDir || `${BASE_DIR}/Library/Mail`;
-  const persistenceInfoPath = `${baseDir}/Library/Mail/${fileDefaults.persistenceInfo}`;
+  const persistenceInfoPath = `${baseDir}/${fileDefaults.persistenceInfo}`;
   const persistenceInfoParsed = (plist.parse(
     fs.readFileSync(persistenceInfoPath, 'utf8'),
   ) as unknown) as PersistenceInfo;
@@ -60,7 +60,7 @@ const getBasePath = (mailDir?: string): string => {
  * add a signature entry to the file containing all signatures
  * @param uuid the uuid for the signature to be added
  */
-const addSignatureToAllSignatures = (uuid: string) => {
+const addSignatureToAllSignatures = (uuid: string, name: string) => {
   const allSignaturesParsed = (plist.parse(
     fs.readFileSync(`${getBasePath()}/${fileDefaults.allSignatures}`, 'utf8'),
   ) as unknown) as Array<SignatureInfo>;
@@ -77,7 +77,7 @@ const addSignatureToAllSignatures = (uuid: string) => {
     ...(allSignaturesParsed as Array<{}>),
     {
       SignatureIsRich: false,
-      SignatureName: 'My-Signature',
+      SignatureName: name,
       SignatureUniqueId: uuid,
     },
   ];
@@ -163,25 +163,25 @@ Mime-Version: 1.0
  * Create a new mail signature from an HTML template
  * @param path the HTML template file path
  */
-const createSignature = async (path: string) => {
+const createSignature = async (path: string, name: string) => {
   const signatureUuid = uuid().toUpperCase();
   const accountMapPath = `${getBasePath()}/${fileDefaults.accountMap}`;
 
   const accountMapParsed = plist.parse(fs.readFileSync(accountMapPath, 'utf8'));
 
   createMailSignature(signatureUuid, path);
-  addSignatureToAllSignatures(signatureUuid);
+  addSignatureToAllSignatures(signatureUuid, name);
   await addSignatureToAccount(signatureUuid);
 };
 
 yargs
   .scriptName('a-mail-signature')
   .command({
-    command: 'create [path]',
+    command: 'create [path] [name]',
     aliases: ['c', 'add', 'a'],
     describe: 'Create a signature from an HTML file',
-    handler: (args: { path: string }) => {
-      createSignature(args.path);
+    handler: (args: { path: string; name: string }) => {
+      createSignature(args.path, args.name);
     },
   })
   /*
