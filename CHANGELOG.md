@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.11...v0.0.12) (2020-03-24)
+
+
+### Features
+
+* auto-inline CSS ([70459b1](https://github.com/d-koppenhagen/a-mail-signature/commit/70459b1821e35256b1e4b0bab7436c462cedb7bb)), closes [#1](https://github.com/d-koppenhagen/a-mail-signature/issues/1)
+
 ### [0.0.11](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.10...v0.0.11) (2020-03-24)
 
 
