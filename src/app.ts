@@ -165,10 +165,6 @@ Mime-Version: 1.0
  */
 const createSignature = async (path: string, name: string) => {
   const signatureUuid = uuid().toUpperCase();
-  const accountMapPath = `${getBasePath()}/${fileDefaults.accountMap}`;
-
-  const accountMapParsed = plist.parse(fs.readFileSync(accountMapPath, 'utf8'));
-
   createMailSignature(signatureUuid, path);
   addSignatureToAllSignatures(signatureUuid, name);
   await addSignatureToAccount(signatureUuid);
