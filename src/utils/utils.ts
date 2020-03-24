@@ -111,9 +111,10 @@ export const addSignatureToAccount = (uuid: string): Promise<void> => {
 export const createMailSignature = async (
   uuid: string,
   templateFilePath: string,
+  update = false,
 ) => {
   const filePath = `${getBasePath()}/${uuid}.mailsignature`;
-  if (fs.existsSync(filePath)) {
+  if (!update && fs.existsSync(filePath)) {
     logError(`Signature file "${uuid}.mailsignature" already exists`);
     process.exit(1);
   }
@@ -139,10 +140,10 @@ export const createMailSignature = async (
 };
 
 /**
- * Delete an existing mail signature
- * @param name the name for the signature that should be deleted
+ * Find an existing signature by it's name
+ * @param name the signature name
  */
-export const removeSignatureFromAllSignatures = (name: string): string => {
+export const getSignatureIdByName = (name: string): string => {
   const allSignaturesParsed = (plist.parse(
     fs.readFileSync(`${getBasePath()}/${fileDefaults.allSignatures}`, 'utf8'),
   ) as unknown) as SignatureInfo[];
@@ -156,6 +157,19 @@ export const removeSignatureFromAllSignatures = (name: string): string => {
     process.exit(1);
   }
 
+  return signatureToBeRemoved.SignatureUniqueId;
+};
+
+/**
+ * Delete an existing mail signature
+ * @param name the name for the signature that should be deleted
+ */
+export const removeSignatureFromAllSignatures = (name: string): string => {
+  const allSignaturesParsed = (plist.parse(
+    fs.readFileSync(`${getBasePath()}/${fileDefaults.allSignatures}`, 'utf8'),
+  ) as unknown) as SignatureInfo[];
+
+  const signatureToBeRemoved = getSignatureIdByName(name);
   const filteredSignatures = allSignaturesParsed.filter(
     (signature) => signature.SignatureName !== name,
   );
@@ -166,7 +180,7 @@ export const removeSignatureFromAllSignatures = (name: string): string => {
     plistResult,
     'utf8',
   );
-  return signatureToBeRemoved.SignatureUniqueId;
+  return signatureToBeRemoved;
 };
 
 /**

@@ -5,6 +5,7 @@ import yargs from 'yargs';
 
 import { createSignature } from './create';
 import { deleteSignature } from './delete';
+import { updateSignature } from './update';
 
 yargs
   .scriptName('a-mail-signature')
@@ -16,15 +17,14 @@ yargs
       createSignature(args.path, args.name);
     },
   })
-  /*
   .command({
-    command: 'update [path]',
+    command: 'update [path] [name]',
     aliases: ['u', 'modify', 'm'],
     describe: 'Update a signature from an HTML file',
-    handler: (args: { path: string }) => {
-      updateSignature(args.path);
+    handler: (args: { path: string; name: string }) => {
+      updateSignature(args.path, args.name);
     },
-  })*/
+  })
   .command({
     command: 'delete [name]',
     aliases: ['d', 'remove', 'rm', 'r'],
