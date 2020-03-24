@@ -16,6 +16,8 @@ Generate and modify Apple Mail E-Mail signatures
 
 ## Usage
 
+> Be sure Apple Mail is closed before updateing the signatures
+
 simply execte the `a-mail-signature` CLI by using `npx`:
 
 ```cli
