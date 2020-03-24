@@ -137,3 +137,66 @@ export const createMailSignature = async (
 
   fs.writeFileSync(filePath, fileContent, 'utf8');
 };
+
+/**
+ * Delete an existing mail signature
+ * @param name the name for the signature that should be deleted
+ */
+export const removeSignatureFromAllSignatures = (name: string): string => {
+  const allSignaturesParsed = (plist.parse(
+    fs.readFileSync(`${getBasePath()}/${fileDefaults.allSignatures}`, 'utf8'),
+  ) as unknown) as SignatureInfo[];
+
+  const signatureToBeRemoved = allSignaturesParsed.find(
+    (signature) => signature.SignatureName === name,
+  );
+
+  if (!signatureToBeRemoved) {
+    logError(`The signature with the name "${name}" doesn't exist`);
+    process.exit(1);
+  }
+
+  const filteredSignatures = allSignaturesParsed.filter(
+    (signature) => signature.SignatureName !== name,
+  );
+  const dictJson: PlistArray = filteredSignatures as {}[];
+  const plistResult = plist.build(dictJson);
+  fs.writeFileSync(
+    `${getBasePath()}/${fileDefaults.allSignatures}`,
+    plistResult,
+    'utf8',
+  );
+  return signatureToBeRemoved.SignatureUniqueId;
+};
+
+/**
+ * remove an existing mail signature file
+ * @param uuid the uuid for the signature to be removed
+ */
+export const removeMailSignature = (uuid: string) => {
+  fs.unlinkSync(`${getBasePath()}/${uuid}.mailsignature`);
+};
+
+/**
+ * Promt the user to select the account to which the signature will be added
+ * @param uuid the uuid for the signature to be added
+ */
+export const removeSignatureFromAccount = (uuid: string) => {
+  const accountMapParsed = (plist.parse(
+    fs.readFileSync(`${getBasePath()}/${fileDefaults.accountMap}`, 'utf8'),
+  ) as unknown) as AccountMap;
+
+  for (let account of Object.values(accountMapParsed)) {
+    account.Signatures = account.Signatures.filter((v) => v !== uuid);
+  }
+
+  const plistResult = plist.build(
+    // workaround because of wrong type matching
+    JSON.parse(JSON.stringify(accountMapParsed)),
+  );
+  fs.writeFileSync(
+    `${getBasePath()}/${fileDefaults.accountMap}`,
+    plistResult,
+    'utf8',
+  );
+};
