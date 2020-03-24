@@ -12,7 +12,9 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 
-Generate and modify Apple Mail E-Mail signatures
+Generate and modify Apple Mail E-Mail signatures via `npx`.
+
+[![a-mail-signature](assets/a-mail-signature.png)]
 
 ## Usage
 
@@ -35,6 +37,8 @@ E-Mail signatures will be defined as HTML.
 
 > Note: all CSS styles must be either inlined or provided inside the `<style></style>` tag.
 > An external reference to a stylesheet using `<style href="style.css">` is not supported.
+
+To check if the template has been added successfully, just open Apple Mail and go to _Mail_ > _Preferences..._ > _Signatures_.
 
 ### Options
 

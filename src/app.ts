@@ -6,6 +6,28 @@ import yargs from 'yargs';
 import { createSignature } from './create';
 import { deleteSignature } from './delete';
 import { updateSignature } from './update';
+import { log, logWarn, green, red, orange } from './utils/log';
+
+log(`${red('                __')}
+${red('               | _]')}
+${red('            .--||---------.')}
+${red('            |  ||         |')}
+${red('            |  ||         |')}
+${red('        ____|__||_________|')}
+                     ${orange('\\  |')}
+ __________________   ${orange('\\ |')}
+| ^^^^           []|   ${orange('||')}
+| ^^^              |   ${orange('||')}
+|                  |   ${orange('||')}
+| ${green('a-mail-signature')} |   ${orange('||')}
+'------------------'   ${orange('||')}
+                       ${orange('||')}
+                       ${orange('||')}
+${green('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')}
+`);
+logWarn(`Be sure Apple Mail is closed to prevent re-writing issues.
+You can start Apple Mail once you finished modifying your signatures.
+`);
 
 yargs
   .scriptName('a-mail-signature')
