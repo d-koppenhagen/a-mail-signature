@@ -7,8 +7,7 @@
     "a-mail-signature": "./dist/app.js"
   },
   "files": [
-    "dist/**/*",
-    "assets/**/*"
+    "dist/**/*"
   ],
   "author": "Danny Koppenhagen <mail@d-koppenhagen.de> (https://d-koppenhagen.de)",
   "homepage": "https://github.com/d-koppenhagen/a-mail-signature",

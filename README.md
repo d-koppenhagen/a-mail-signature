@@ -14,7 +14,7 @@
 
 Generate and modify Apple Mail E-Mail signatures via `npx`.
 
-[![a-mail-signature](assets/a-mail-signature.png)]
+[![a-mail-signature](https://raw.githubusercontent.com/d-koppenhagen/a-mail-signature/master/assets/a-mail-signature.png)]
 
 ## Usage
 
