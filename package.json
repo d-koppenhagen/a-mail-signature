@@ -6,6 +6,9 @@
   "bin": {
     "a-mail-signature": "./dist/app.js"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "author": "Danny Koppenhagen <mail@d-koppenhagen.de> (https://d-koppenhagen.de)",
   "homepage": "https://github.com/d-koppenhagen/a-mail-signature",
   "bugs": {
@@ -23,7 +26,9 @@
     "lint": "eslint \"**/*.{ts,js}\"",
     "format": "prettier --write \"**/*.{ts,js,json,yaml,yml,md}\"",
     "format:check": "prettier --debug-check \"**/*.{ts,js,json,yaml,yml,md}\"",
-    "release": "standard-version"
+    "prepare": "npm run build",
+    "release": "standard-version",
+    "postrelease": "git push --follow-tags --force origin master && npm publish"
   },
   "lint-staged": {
     "*.{ts,js}": [
