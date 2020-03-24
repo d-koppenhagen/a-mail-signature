@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.12...v0.0.13) (2020-03-24)
+
+
+### Features
+
+* remove existing mail signatures ([ffc81bd](https://github.com/d-koppenhagen/a-mail-signature/commit/ffc81bdd98d0a48a4a1c1e94d809e4cec3948304)), closes [#2](https://github.com/d-koppenhagen/a-mail-signature/issues/2)
+* update an existing signature ([ecfac03](https://github.com/d-koppenhagen/a-mail-signature/commit/ecfac032bee1da7df4743fbae5d0ecf7dec6c7d2)), closes [#3](https://github.com/d-koppenhagen/a-mail-signature/issues/3)
+
 ### [0.0.12](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.11...v0.0.12) (2020-03-24)
 
 
