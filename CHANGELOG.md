@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.22](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.21...v0.0.22) (2020-03-25)
+
+
+### Features
+
+* use consistent arg positions ([9cbcb7d](https://github.com/d-koppenhagen/a-mail-signature/commit/9cbcb7db39cf73579a1d30261523155f7a3f5d9c))
+
 ### [0.0.21](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.20...v0.0.21) (2020-03-25)
 
 
