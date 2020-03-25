@@ -63,6 +63,7 @@
   },
   "dependencies": {
     "chalk": "^3.0.0",
+    "fs-xattr": "^0.3.0",
     "inline-css": "^2.6.3",
     "plist": "^3.0.1",
     "select-prompt": "^0.3.2",

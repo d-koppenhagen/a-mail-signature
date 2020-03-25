@@ -4,6 +4,7 @@ import path from 'path';
 import inlineCss from 'inline-css';
 import plist, { PlistArray } from 'plist';
 const prompt = require('select-prompt');
+const xattr = require('fs-xattr');
 
 import { logError, logWarn } from './log';
 import { PersistenceInfo, SignatureInfo, AccountMap } from './interfaces';
@@ -134,10 +135,10 @@ Content-Type: text/html;
     charset=utf-8
 Mime-Version: 1.0
     
-<body>${inlinedHtml}</body>
-`;
+<body>${inlinedHtml}</body>`;
 
   fs.writeFileSync(filePath, fileContent, 'utf8');
+  await xattr.set(filePath, 'com.apple.quarantine', '19');
 };
 
 /**
