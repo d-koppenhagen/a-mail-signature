@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.19](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.18...v0.0.19) (2020-03-25)
+
+
+### Bug Fixes
+
+* write extended file attributes for macOS ([2417fb4](https://github.com/d-koppenhagen/a-mail-signature/commit/2417fb421f9a983bb65d54f4804c9a6b468c8b7f))
+
 ### [0.0.18](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.17...v0.0.18) (2020-03-25)
 
 
