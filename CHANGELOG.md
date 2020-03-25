@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.17...v0.0.18) (2020-03-25)
+
+
+### Bug Fixes
+
+* mail signature content alignment ([c1395a4](https://github.com/d-koppenhagen/a-mail-signature/commit/c1395a4115eac002ba0d34f6606263bcdf286618))
+
 ### [0.0.17](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.16...v0.0.17) (2020-03-24)
 
 ### [0.0.16](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.15...v0.0.16) (2020-03-24)
