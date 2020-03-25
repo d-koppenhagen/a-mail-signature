@@ -130,11 +130,12 @@ export const createMailSignature = async (
     .replace(/(\r\n|\n|\r)/gm, ''); // replace line breaks
 
   const fileContent = `Content-Transfer-Encoding: quoted-printable
-    Content-Type: text/html;
-      charset=utf-8
-    Mime-Version: 1.0
+Content-Type: text/html;
+    charset=utf-8
+Mime-Version: 1.0
     
-    <body>${inlinedHtml}</body>`;
+<body>${inlinedHtml}</body>
+`;
 
   fs.writeFileSync(filePath, fileContent, 'utf8');
 };
