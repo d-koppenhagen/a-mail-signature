@@ -138,7 +138,7 @@ Mime-Version: 1.0
 <body>${inlinedHtml}</body>`;
 
   fs.writeFileSync(filePath, fileContent, 'utf8');
-  await xattr.set(filePath, 'com.apple.quarantine', '19');
+  await xattr.set(filePath, 'com.apple.quarantine', new Buffer(19));
 };
 
 /**
