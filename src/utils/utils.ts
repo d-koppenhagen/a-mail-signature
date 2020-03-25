@@ -127,15 +127,15 @@ export const createMailSignature = async (
   });
   inlinedHtml = inlinedHtml
     .replace(/(.|\n)*<body.*>/, '') // replace everything until "body>"
-    .replace(/<\/body(.|\n)*/g, '') // replace everything before "</body
-    .replace(/(\r\n|\n|\r)/gm, ''); // replace line breaks
+    .replace(/<\/body(.|\n)*/g, ''); // replace everything before "</body"
 
   const fileContent = `Content-Transfer-Encoding: quoted-printable
 Content-Type: text/html;
-    charset=utf-8
+  charset=utf-8
 Mime-Version: 1.0
-    
-<body>${inlinedHtml}</body>`;
+
+<body>${inlinedHtml}</body>
+`;
 
   fs.writeFileSync(filePath, fileContent, 'utf8');
   await xattr.set(filePath, 'com.apple.quarantine', new Buffer(19));
