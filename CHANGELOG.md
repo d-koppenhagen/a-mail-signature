@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.21](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.20...v0.0.21) (2020-03-25)
+
+
+### Bug Fixes
+
+* adjust basic template ([0692ad4](https://github.com/d-koppenhagen/a-mail-signature/commit/0692ad4e87c2d1a9a81195fbc0a413014a2fa0c5))
+
 ### [0.0.20](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.19...v0.0.20) (2020-03-25)
 
 

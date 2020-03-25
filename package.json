@@ -1,7 +1,7 @@
 {
   "name": "a-mail-signature",
   "description": "Generate and modify Apple Mail E-Mail signatures",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "main": "./dist/app.js",
   "bin": {
     "a-mail-signature": "./dist/app.js"
