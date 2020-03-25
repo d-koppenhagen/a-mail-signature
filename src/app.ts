@@ -16,9 +16,7 @@ ${red('            |  ||         |')}
 ${red('        ____|__||_________|')}
                      ${orange('\\  |')}
  __________________   ${orange('\\ |')}
-| ^^^^           []|   ${orange('||')}   ${green(
-  'v' + process.env.npm_package_version,
-)}
+| ^^^^           []|   ${orange('||')}
 | ^^^              |   ${orange('||')}
 |                  |   ${orange('||')}
 | ${green('a-mail-signature')} |   ${orange('||')}
