@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-import { logError } from './utils/log';
+import { argNotProvided } from './utils/log';
 import {
   createMailSignature,
   addSignatureToAllSignatures,
@@ -11,14 +11,15 @@ import {
  * Create a new mail signature from an HTML template
  * @param path the HTML template file path
  */
-export const createSignature = async (path: string, name: string) => {
+export const createSignature = async (name: string, path: string) => {
   if (!name) {
-    logError(
-      `No name for the signature provided (see usage by running "npx a-mail-signature --help")`,
-    );
+    argNotProvided('name');
     process.exit(1);
   }
-
+  if (!path) {
+    argNotProvided('path');
+    process.exit(1);
+  }
   const signatureUuid = uuid().toUpperCase();
   createMailSignature(signatureUuid, path);
   addSignatureToAllSignatures(signatureUuid, name);

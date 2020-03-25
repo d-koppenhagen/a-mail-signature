@@ -16,7 +16,9 @@ ${red('            |  ||         |')}
 ${red('        ____|__||_________|')}
                      ${orange('\\  |')}
  __________________   ${orange('\\ |')}
-| ^^^^           []|   ${orange('||')}
+| ^^^^           []|   ${orange('||')}   ${green(
+  'v' + process.env.npm_package_version,
+)}
 | ^^^              |   ${orange('||')}
 |                  |   ${orange('||')}
 | ${green('a-mail-signature')} |   ${orange('||')}
@@ -32,19 +34,19 @@ You can start Apple Mail once you finished modifying your signatures.
 yargs
   .scriptName('a-mail-signature')
   .command({
-    command: 'create [path] [name]',
+    command: 'create [name] [path]',
     aliases: ['c', 'add', 'a'],
     describe: 'Create a signature from an HTML file',
     handler: (args: { path: string; name: string }) => {
-      createSignature(args.path, args.name);
+      createSignature(args.name, args.path);
     },
   })
   .command({
-    command: 'update [path] [name]',
+    command: 'update [name] [path]',
     aliases: ['u', 'modify', 'm'],
     describe: 'Update a signature from an HTML file',
     handler: (args: { path: string; name: string }) => {
-      updateSignature(args.path, args.name);
+      updateSignature(args.name, args.path);
     },
   })
   .command({

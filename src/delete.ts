@@ -1,4 +1,4 @@
-import { logError } from './utils/log';
+import { argNotProvided } from './utils/log';
 import {
   removeSignatureFromAllSignatures,
   removeMailSignature,
@@ -10,12 +10,9 @@ import {
  */
 export const deleteSignature = async (name: string) => {
   if (!name) {
-    logError(
-      `No name for the signature provided (see usage by running "npx a-mail-signature --help")`,
-    );
+    argNotProvided('name');
     process.exit(1);
   }
-
   const signatureUuid = removeSignatureFromAllSignatures(name);
   removeMailSignature(signatureUuid);
   removeSignatureFromAccount(signatureUuid);

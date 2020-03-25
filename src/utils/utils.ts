@@ -1,6 +1,5 @@
 import fs from 'fs';
 import os from 'os';
-import path from 'path';
 import inlineCss from 'inline-css';
 import plist, { PlistArray } from 'plist';
 const prompt = require('select-prompt');

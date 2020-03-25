@@ -22,13 +22,21 @@ Generate and modify Apple Mail E-Mail signatures via `npx`.
 
 simply execte the `a-mail-signature` CLI by using `npx`:
 
-```cli
+```bash
 npx a-mail-signature <option>
+```
+
+For example:
+
+```bash
+npx a-mail-signature create "My Default Signature" template.html
+npx a-mail-signature modify "My Default Signature" template2.html
+npx a-mail-signature delete "My Default Signature"
 ```
 
 You can also install the CLI globally and execute `a-mail-signature` after that:
 
-```cli
+```bash
 npm i -g a-mail-signature
 a-mail-signature <option>
 ```
@@ -44,7 +52,7 @@ To check if the template has been added successfully, just open Apple Mail and g
 
 All options are described in the help prompt:
 
-```cli
+```bash
 npx a-mail-signature --help
 ```
 
