@@ -1,7 +1,7 @@
 {
   "name": "a-mail-signature",
   "description": "Generate and modify Apple Mail E-Mail signatures",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "./dist/app.js",
   "bin": {
     "a-mail-signature": "./dist/app.js"
@@ -39,7 +39,8 @@
     "format:check": "prettier --debug-check \"**/*.{ts,js,json,yaml,yml,md}\"",
     "prepare": "npm run build",
     "release": "standard-version",
-    "postrelease": "git push --follow-tags --force origin master && npm publish"
+    "postrelease": "git push --follow-tags --force origin master && npm publish",
+    "test": "jest"
   },
   "lint-staged": {
     "*.{ts,js}": [
@@ -74,7 +75,8 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@types/inline-css": "0.0.32",
-    "@types/node": "^13.9.3",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.4",
     "@types/plist": "^3.0.2",
     "@types/uuid": "^7.0.2",
     "@types/yargs": "^15.0.4",
@@ -83,10 +85,12 @@
     "eslint": "^6.8.0",
     "eslint-config-neo": "^0.5.2",
     "husky": "^4.2.3",
+    "jest": "^25.1.0",
     "lint-staged": "^10.0.8",
     "prettier": "^2.0.1",
     "rimraf": "^3.0.2",
     "standard-version": "^7.1.0",
+    "ts-jest": "^25.2.1",
     "ts-node": "^8.8.1",
     "typescript": "^3.8.3"
   }

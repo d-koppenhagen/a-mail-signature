@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/d-koppenhagen/a-mail-signature/compare/v1.0.0...v1.1.0) (2020-03-27)
+
+
+### Features
+
+* allow to define a specific mail dir ([dddd2ba](https://github.com/d-koppenhagen/a-mail-signature/commit/dddd2ba99724c47ec262d730dc84d32e12c16104))
+
 ## [1.0.0](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.22...v1.0.0) (2020-03-25)
 
 ### [0.0.23](https://github.com/d-koppenhagen/a-mail-signature/compare/v0.0.22...v0.0.23) (2020-03-25)
