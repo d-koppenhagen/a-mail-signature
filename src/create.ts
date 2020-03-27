@@ -11,7 +11,11 @@ import {
  * Create a new mail signature from an HTML template
  * @param path the HTML template file path
  */
-export const createSignature = async (name: string, path: string) => {
+export const createSignature = async (
+  name: string,
+  path: string,
+  mailDir?: string,
+) => {
   if (!name) {
     argNotProvided('name');
     process.exit(1);
@@ -21,7 +25,7 @@ export const createSignature = async (name: string, path: string) => {
     process.exit(1);
   }
   const signatureUuid = uuid().toUpperCase();
-  createMailSignature(signatureUuid, path);
-  addSignatureToAllSignatures(signatureUuid, name);
-  await addSignatureToAccount(signatureUuid);
+  createMailSignature(signatureUuid, path, false, mailDir);
+  addSignatureToAllSignatures(signatureUuid, name, mailDir);
+  await addSignatureToAccount(signatureUuid, mailDir);
 };

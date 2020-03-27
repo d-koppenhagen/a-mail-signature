@@ -18,6 +18,9 @@ const BASE_DIR: string = process.env.LOCAL_HOME_DIR
  * for storing mail signatures in apple mail
  */
 export const getBasePath = (mailDir?: string): string => {
+  if (mailDir === 'container') {
+    mailDir = `${BASE_DIR}/Library/Containers/com.apple.mail/Data/Library/Mail`;
+  }
   const baseDir = mailDir || `${BASE_DIR}/Library/Mail`;
   const persistenceInfoPath = `${baseDir}/${fileDefaults.persistenceInfo}`;
   const persistenceInfoParsed = (plist.parse(
@@ -30,9 +33,16 @@ export const getBasePath = (mailDir?: string): string => {
  * add a signature entry to the file containing all signatures
  * @param uuid the uuid for the signature to be added
  */
-export const addSignatureToAllSignatures = (uuid: string, name: string) => {
+export const addSignatureToAllSignatures = (
+  uuid: string,
+  name: string,
+  mailDir?: string,
+) => {
   const allSignaturesParsed = (plist.parse(
-    fs.readFileSync(`${getBasePath()}/${fileDefaults.allSignatures}`, 'utf8'),
+    fs.readFileSync(
+      `${getBasePath(mailDir)}/${fileDefaults.allSignatures}`,
+      'utf8',
+    ),
   ) as unknown) as SignatureInfo[];
 
   if (
@@ -63,9 +73,15 @@ export const addSignatureToAllSignatures = (uuid: string, name: string) => {
  * Promt the user to select the account to which the signature will be added
  * @param uuid the uuid for the signature to be added
  */
-export const addSignatureToAccount = (uuid: string): Promise<void> => {
+export const addSignatureToAccount = (
+  uuid: string,
+  mailDir?: string,
+): Promise<void> => {
   const accountMapParsed = (plist.parse(
-    fs.readFileSync(`${getBasePath()}/${fileDefaults.accountMap}`, 'utf8'),
+    fs.readFileSync(
+      `${getBasePath(mailDir)}/${fileDefaults.accountMap}`,
+      'utf8',
+    ),
   ) as unknown) as AccountMap;
 
   return new Promise((resolve) => {
@@ -112,8 +128,9 @@ export const createMailSignature = async (
   uuid: string,
   templateFilePath: string,
   update = false,
+  mailDir?: string,
 ) => {
-  const filePath = `${getBasePath()}/${uuid}.mailsignature`;
+  const filePath = `${getBasePath(mailDir)}/${uuid}.mailsignature`;
   if (!update && fs.existsSync(filePath)) {
     logError(`Signature file "${uuid}.mailsignature" already exists`);
     process.exit(1);
@@ -144,9 +161,15 @@ Mime-Version: 1.0
  * Find an existing signature by it's name
  * @param name the signature name
  */
-export const getSignatureIdByName = (name: string): string => {
+export const getSignatureIdByName = (
+  name: string,
+  mailDir?: string,
+): string => {
   const allSignaturesParsed = (plist.parse(
-    fs.readFileSync(`${getBasePath()}/${fileDefaults.allSignatures}`, 'utf8'),
+    fs.readFileSync(
+      `${getBasePath(mailDir)}/${fileDefaults.allSignatures}`,
+      'utf8',
+    ),
   ) as unknown) as SignatureInfo[];
 
   const signatureToBeRemoved = allSignaturesParsed.find(
@@ -165,9 +188,15 @@ export const getSignatureIdByName = (name: string): string => {
  * Delete an existing mail signature
  * @param name the name for the signature that should be deleted
  */
-export const removeSignatureFromAllSignatures = (name: string): string => {
+export const removeSignatureFromAllSignatures = (
+  name: string,
+  mailDir?: string,
+): string => {
   const allSignaturesParsed = (plist.parse(
-    fs.readFileSync(`${getBasePath()}/${fileDefaults.allSignatures}`, 'utf8'),
+    fs.readFileSync(
+      `${getBasePath(mailDir)}/${fileDefaults.allSignatures}`,
+      'utf8',
+    ),
   ) as unknown) as SignatureInfo[];
 
   const signatureToBeRemoved = getSignatureIdByName(name);
@@ -177,7 +206,7 @@ export const removeSignatureFromAllSignatures = (name: string): string => {
   const dictJson: PlistArray = filteredSignatures as {}[];
   const plistResult = plist.build(dictJson);
   fs.writeFileSync(
-    `${getBasePath()}/${fileDefaults.allSignatures}`,
+    `${getBasePath(mailDir)}/${fileDefaults.allSignatures}`,
     plistResult,
     'utf8',
   );
@@ -188,17 +217,20 @@ export const removeSignatureFromAllSignatures = (name: string): string => {
  * remove an existing mail signature file
  * @param uuid the uuid for the signature to be removed
  */
-export const removeMailSignature = (uuid: string) => {
-  fs.unlinkSync(`${getBasePath()}/${uuid}.mailsignature`);
+export const removeMailSignature = (uuid: string, mailDir?: string) => {
+  fs.unlinkSync(`${getBasePath(mailDir)}/${uuid}.mailsignature`);
 };
 
 /**
  * Promt the user to select the account to which the signature will be added
  * @param uuid the uuid for the signature to be added
  */
-export const removeSignatureFromAccount = (uuid: string) => {
+export const removeSignatureFromAccount = (uuid: string, mailDir?: string) => {
   const accountMapParsed = (plist.parse(
-    fs.readFileSync(`${getBasePath()}/${fileDefaults.accountMap}`, 'utf8'),
+    fs.readFileSync(
+      `${getBasePath(mailDir)}/${fileDefaults.accountMap}`,
+      'utf8',
+    ),
   ) as unknown) as AccountMap;
 
   for (let account of Object.values(accountMapParsed)) {
@@ -210,7 +242,7 @@ export const removeSignatureFromAccount = (uuid: string) => {
     JSON.parse(JSON.stringify(accountMapParsed)),
   );
   fs.writeFileSync(
-    `${getBasePath()}/${fileDefaults.accountMap}`,
+    `${getBasePath(mailDir)}/${fileDefaults.accountMap}`,
     plistResult,
     'utf8',
   );

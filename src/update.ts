@@ -5,7 +5,11 @@ import { createMailSignature, getSignatureIdByName } from './utils/utils';
  * Update an existing new mail signature from an HTML template
  * @param path the HTML template file path
  */
-export const updateSignature = async (name: string, path: string) => {
+export const updateSignature = async (
+  name: string,
+  path: string,
+  mailDir?: string,
+) => {
   if (!name) {
     argNotProvided('name');
     process.exit(1);
@@ -14,6 +18,6 @@ export const updateSignature = async (name: string, path: string) => {
     argNotProvided('path');
     process.exit(1);
   }
-  const signatureUuid = getSignatureIdByName(name);
-  createMailSignature(signatureUuid, path, true);
+  const signatureUuid = getSignatureIdByName(name, mailDir);
+  createMailSignature(signatureUuid, path, true, mailDir);
 };

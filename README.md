@@ -16,6 +16,10 @@ Generate and modify Apple Mail E-Mail signatures via `npx`.
 
 ![a-mail-signature](https://raw.githubusercontent.com/d-koppenhagen/a-mail-signature/master/assets/a-mail-signature.png)
 
+> IMPORTANT NOTE: Currently this tool works just if your Apple Mail base directory is located in `~/Library/Mail`.
+> However Apple started to containerize the App and on some machines Apple Mail is now part of an app container located in `~/Library/Containers/com.apple.mail` and cannot be modified (at least I don't know how yet).
+> I am working on finding out a way to achive modifying the signatures even in the containerized installation..
+
 ## Usage
 
 > Be sure Apple Mail is closed before updateing the signatures

@@ -35,25 +35,30 @@ yargs
     command: 'create [name] [path]',
     aliases: ['c', 'add', 'a'],
     describe: 'Create a signature from an HTML file',
-    handler: (args: { path: string; name: string }) => {
-      createSignature(args.name, args.path);
+    handler: (args: { path: string; name: string; mailDir: string }) => {
+      createSignature(args.name, args.path, args.mailDir);
     },
   })
   .command({
     command: 'update [name] [path]',
     aliases: ['u', 'modify', 'm'],
     describe: 'Update a signature from an HTML file',
-    handler: (args: { path: string; name: string }) => {
-      updateSignature(args.name, args.path);
+    handler: (args: { path: string; name: string; mailDir: string }) => {
+      updateSignature(args.name, args.path, args.mailDir);
     },
   })
   .command({
     command: 'delete [name]',
     aliases: ['d', 'remove', 'rm', 'r'],
     describe: 'Delete an existing mail signature',
-    handler: (args: { name: string }) => {
-      deleteSignature(args.name);
+    handler: (args: { name: string; mailDir: string }) => {
+      deleteSignature(args.name, args.mailDir);
     },
+  })
+  .option('mail-dir', {
+    alias: 'm',
+    type: 'string',
+    description: 'Define a machine specific mail directory',
   })
   .wrap(100)
   .demandCommand(2)
